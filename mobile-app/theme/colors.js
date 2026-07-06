@@ -1,34 +1,31 @@
+const colors = {
+  primary: '#00C853',
+  primaryDark: '#009624',
 
+  secondary: '#2196F3',
+  secondaryDark: '#1565C0',
 
-const COLORS = {
-  // Brand
-  primary: "#00E676",
-  primaryDark: "#00C853",
-  secondary: "#29B6F6",
+  background: '#020617',
 
-  // Backgrounds
-  background: "#020617",
-  surface: "#0F172A",
-  card: "#1E293B",
+  surface: '#0F172A',
+  surfaceLight: '#1E293B',
 
-  // Text
-  white: "#FFFFFF",
-  text: "#F8FAFC",
-  textSecondary: "#94A3B8",
-  textMuted: "#64748B",
+  border: '#334155',
 
-  // Status
-  success: "#00E676",
-  warning: "#F59E0B",
-  error: "#EF4444",
-  info: "#29B6F6",
+  white: '#F8FAFC',
 
-  // Borders
-  border: "#334155",
+  text: '#F8FAFC',
+  textSecondary: '#94A3B8',
 
-  // Misc
-  overlay: "rgba(0,0,0,0.5)",
-  transparent: "transparent",
+  success: '#22C55E',
+  warning: '#F59E0B',
+  danger: '#EF4444',
+  info: '#38BDF8',
+
+  disabled: '#475569',
+  placeholder: '#64748B',
+
+  transparent: 'transparent',
 };
 
-export default COLORS;
+export default colors;
