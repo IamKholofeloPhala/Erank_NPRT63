@@ -1,11 +1,13 @@
-import COLORS from "./colors";
-import TYPOGRAPHY from "./typography";
-import SPACING from "./spacing";
+import colors from './colors';
+import spacing from './spacing';
+import typography from './typography';
 
-const THEME = {
-  COLORS,
-  TYPOGRAPHY,
-  SPACING,
+export default {
+
+  colors,
+
+  spacing,
+
+  typography,
+
 };
-
-export default THEME;

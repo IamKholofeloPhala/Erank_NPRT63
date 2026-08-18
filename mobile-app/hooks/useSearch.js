@@ -19,9 +19,9 @@ export default function useSearch() {
 
     try {
 
-      const data = await getPopularDestinations();
+      const response = await getPopularDestinations();
 
-      setPopular(data);
+      setPopular(response);
 
     } catch (error) {
 
@@ -43,15 +43,11 @@ export default function useSearch() {
 
       setResults(response);
 
-    }
-
-    catch (error) {
+    } catch (error) {
 
       console.log(error);
 
-    }
-
-    finally {
+    } finally {
 
       setLoading(false);
 

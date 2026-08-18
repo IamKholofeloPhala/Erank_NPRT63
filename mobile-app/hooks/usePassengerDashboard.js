@@ -1,29 +1,23 @@
-import { useEffect, useState } from 'react';
-import { getPassengerDashboard } from '../services/mock/passengerService';
+import useDataLoader from './useDataLoader';
+
+import {
+
+    getPassengerDashboard,
+
+} from '../services/passengerDashboardService';
 
 export default function usePassengerDashboard() {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
 
-  async function loadDashboard() {
-    try {
-      setLoading(true);
-      const response = await getPassengerDashboard();
-      setData(response);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  }
+    return useDataLoader(
 
-  useEffect(() => {
-    loadDashboard();
-  }, []);
+        getPassengerDashboard,
 
-  return {
-    data,
-    loading,
-    refresh: loadDashboard,
-  };
+        {
+
+            screen: 'Passenger Dashboard',
+
+        }
+
+    );
+
 }

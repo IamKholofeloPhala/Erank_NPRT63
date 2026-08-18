@@ -25,7 +25,7 @@ export default function LoginScreen({ navigation }) {
 
   const { login } = useAuth();
 
-  const [email, setEmail] = useState('');
+  const [cellphone, setCellphone] = useState('');
   const [password, setPassword] = useState('');
 
   const [errors, setErrors] = useState({});
@@ -40,42 +40,38 @@ export default function LoginScreen({ navigation }) {
 
       await loginSchema.validate(
         {
-          email,
-          password
+          cellphone,
+          password,
         },
         {
-          abortEarly:false
+          abortEarly: false,
         }
       );
 
       setLoading(true);
 
       const response = await AuthService.login(
-        email,
+        cellphone,
         password
       );
 
       await login(response.user);
 
-    }
+    } catch (error) {
 
-    catch(error){
+      if (error.inner) {
 
-      if(error.inner){
+        const validationErrors = {};
 
-        const validationErrors={};
+        error.inner.forEach(item => {
 
-        error.inner.forEach(item=>{
-
-          validationErrors[item.path]=item.message;
+          validationErrors[item.path] = item.message;
 
         });
 
         setErrors(validationErrors);
 
-      }
-
-      else{
+      } else {
 
         Alert.alert(
           'Login Failed',
@@ -84,9 +80,7 @@ export default function LoginScreen({ navigation }) {
 
       }
 
-    }
-
-    finally{
+    } finally {
 
       setLoading(false);
 
@@ -94,184 +88,151 @@ export default function LoginScreen({ navigation }) {
 
   }
 
-  return(
+  return (
 
-<ScreenContainer>
+    <ScreenContainer>
 
-<View style={styles.container}>
+      <View style={styles.container}>
 
-<AppLogo/>
+        <AppLogo />
 
-<Card style={styles.card}>
+        <Card style={styles.card}>
 
-<Text style={styles.title}>
+          <Text style={styles.title}>
+            Welcome Back
+          </Text>
 
-Welcome Back
+          <Text style={styles.subtitle}>
+            Sign in to continue
+          </Text>
 
-</Text>
+          <PrimaryInput
+            label="Cell Number"
+            placeholder="Enter cellphone number"
+            value={cellphone}
+            onChangeText={setCellphone}
+            keyboardType="phone-pad"
+            error={errors.cellphone}
+          />
 
-<Text style={styles.subtitle}>
+          <PasswordInput
+            label="Password"
+            placeholder="Enter Password"
+            value={password}
+            onChangeText={setPassword}
+            error={errors.password}
+          />
 
-Sign in to continue
+          <PrimaryButton
+            title="LOGIN"
+            loading={loading}
+            onPress={handleLogin}
+          />
 
-</Text>
+          <TouchableOpacity
+            style={styles.link}
+            onPress={() => navigation.navigate('ForgotPassword')}
+          >
 
-<PrimaryInput
+            <Text style={styles.linkText}>
+              Forgot Password?
+            </Text>
 
-label="Email Address"
+          </TouchableOpacity>
 
-placeholder="name@email.com"
+          <TouchableOpacity
+            style={styles.link}
+            onPress={() => navigation.navigate('Register')}
+          >
 
-value={email}
+            <Text style={styles.linkText}>
+              Create Account
+            </Text>
 
-onChangeText={setEmail}
+          </TouchableOpacity>
 
-keyboardType="email-address"
+        </Card>
 
-error={errors.email}
+        <Text style={styles.version}>
+          E-RANK MOBILE v1.0.0
+        </Text>
 
-/>
+      </View>
 
-<PasswordInput
+    </ScreenContainer>
 
-label="Password"
-
-placeholder="Enter Password"
-
-value={password}
-
-onChangeText={setPassword}
-
-error={errors.password}
-
-/>
-
-<PrimaryButton
-
-title="LOGIN"
-
-loading={loading}
-
-onPress={handleLogin}
-
-/>
-
-<TouchableOpacity
-
-style={styles.link}
-
-onPress={()=>navigation.navigate('ForgotPassword')}
-
->
-
-<Text style={styles.linkText}>
-
-Forgot Password?
-
-</Text>
-
-</TouchableOpacity>
-
-<TouchableOpacity
-
-style={styles.link}
-
-onPress={()=>navigation.navigate('Register')}
-
->
-
-<Text style={styles.linkText}>
-
-Create Account
-
-</Text>
-
-</TouchableOpacity>
-
-</Card>
-
-<Text style={styles.version}>
-
-E-RANK MOBILE v1.0.0
-
-</Text>
-
-</View>
-
-</ScreenContainer>
-
-);
+  );
 
 }
 
-const styles=StyleSheet.create({
+const styles = StyleSheet.create({
 
-container:{
+  container: {
 
-flex:1,
+    flex: 1,
 
-justifyContent:'center',
+    justifyContent: 'center',
 
-padding:spacing.lg
+    padding: spacing.lg,
 
-},
+  },
 
-card:{
+  card: {
 
-marginTop:20
+    marginTop: 20,
 
-},
+  },
 
-title:{
+  title: {
 
-fontSize:28,
+    fontSize: 28,
 
-fontWeight:'800',
+    fontWeight: '800',
 
-color:colors.white,
+    color: colors.white,
 
-marginBottom:5
+    marginBottom: 5,
 
-},
+  },
 
-subtitle:{
+  subtitle: {
 
-color:colors.textSecondary,
+    color: colors.textSecondary,
 
-marginBottom:25,
+    marginBottom: 25,
 
-fontSize:15
+    fontSize: 15,
 
-},
+  },
 
-link:{
+  link: {
 
-marginTop:18,
+    marginTop: 18,
 
-alignItems:'center'
+    alignItems: 'center',
 
-},
+  },
 
-linkText:{
+  linkText: {
 
-color:colors.secondary,
+    color: colors.secondary,
 
-fontWeight:'700',
+    fontWeight: '700',
 
-fontSize:14
+    fontSize: 14,
 
-},
+  },
 
-version:{
+  version: {
 
-textAlign:'center',
+    textAlign: 'center',
 
-marginTop:30,
+    marginTop: 30,
 
-color:colors.placeholder,
+    color: colors.placeholder,
 
-fontSize:12
+    fontSize: 12,
 
-}
+  },
 
 });

@@ -73,26 +73,68 @@ export default function TaxiRankDetailsScreen({
 
         </Text>
 
-        <InfoCard icon="🚖" title="Available Taxis" value={rank.taxis.toString()} />
+        <InfoCard
+          icon="🚖"
+          title="Available Taxis"
+          value={rank.taxis.toString()}
+        />
 
-        <InfoCard icon="👥" title="Queue" value={rank.queue.toString()} />
+        <InfoCard
+          icon="📍"
+          title="Live Queue"
+          value={rank.queue.toString()}
+        />
 
-        <InfoCard icon="⭐" title="Rating" value={rank.rating.toString()} />
+        <InfoCard
+          icon="👨"
+          title="Current Driver"
+          value={rank.driver}
+        />
 
-        <InfoCard icon="🕘" title="Last Taxi" value={rank.lastTaxi} />
+        <InfoCard
+          icon="🚐"
+          title="Taxi Registration"
+          value={rank.registration}
+        />
 
-        <InfoCard icon="🕐" title="Operating Hours" value={rank.operatingHours} />
+        <InfoCard
+          icon="💰"
+          title="Fare"
+          value={rank.fare}
+        />
 
-        <InfoCard icon="🛡️" title="Safety" value={rank.safety} />
+        <InfoCard
+          icon="🕘"
+          title="Last Taxi Departure"
+          value={rank.lastTaxi}
+        />
 
-        <InfoCard icon="📞" title="Contact" value={rank.contact} />
+        <InfoCard
+          icon="🕐"
+          title="Operating Hours"
+          value={rank.operatingHours}
+        />
 
-        <InfoCard icon="📍" title="Address" value={rank.address} />
+        <InfoCard
+          icon="🛡️"
+          title="Safety Status"
+          value={rank.safety}
+        />
+
+        <InfoCard
+          icon="📞"
+          title="Contact Number"
+          value={rank.contact}
+        />
+
+        <InfoCard
+          icon="📍"
+          title="Rank Address"
+          value={rank.address}
+        />
 
         <ActionButtons
-
           navigation={navigation}
-
         />
 
       </ScrollView>
@@ -105,31 +147,31 @@ export default function TaxiRankDetailsScreen({
 
 const styles = StyleSheet.create({
 
-  container:{
+  container: {
 
-    padding:20,
+    padding: 20,
 
-    paddingBottom:40,
-
-  },
-
-  loader:{
-
-    flex:1,
-
-    justifyContent:'center',
+    paddingBottom: 40,
 
   },
 
-  title:{
+  loader: {
 
-    color:colors.white,
+    flex: 1,
 
-    fontSize:30,
+    justifyContent: 'center',
 
-    fontWeight:'900',
+  },
 
-    marginBottom:25,
+  title: {
+
+    color: colors.white,
+
+    fontSize: 30,
+
+    fontWeight: '900',
+
+    marginBottom: 25,
 
   },
 

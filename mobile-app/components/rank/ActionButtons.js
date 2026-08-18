@@ -33,11 +33,25 @@ export default function ActionButtons({
 
       <PrimaryButton
 
-        title="JOIN QUEUE"
+        title="VIEW SAFETY ALERTS"
 
         onPress={() => {
 
-          navigation.navigate('Queue');
+          navigation.navigate('SafetyAlerts');
+
+        }}
+
+      />
+
+      <View style={styles.space} />
+
+      <PrimaryButton
+
+        title="VIEW NEWS"
+
+        onPress={() => {
+
+          navigation.navigate('News');
 
         }}
 
@@ -51,15 +65,15 @@ export default function ActionButtons({
 
 const styles = StyleSheet.create({
 
-  container:{
+  container: {
 
-    marginTop:20,
+    marginTop: 20,
 
   },
 
-  space:{
+  space: {
 
-    height:15,
+    height: 15,
 
   },
 

@@ -20,13 +20,13 @@ export default function useTaxiRank(id) {
 
     }
 
-    catch(error){
+    catch (error) {
 
       console.log(error);
 
     }
 
-    finally{
+    finally {
 
       setLoading(false);
 
@@ -34,19 +34,19 @@ export default function useTaxiRank(id) {
 
   }
 
-  useEffect(()=>{
+  useEffect(() => {
 
     loadRank();
 
-  },[id]);
+  }, [id]);
 
-  return{
+  return {
 
     rank,
 
     loading,
 
-    refresh:loadRank,
+    refresh: loadRank,
 
   };
 

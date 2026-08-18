@@ -6,82 +6,82 @@ import DashboardCard from '../cards/DashboardCard';
 
 export default function StatsGrid({
 
-availability,
+  dashboard,
 
-}){
+}) {
 
-return(
+  return (
 
-<>
+    <>
 
-<View style={styles.row}>
+      <View style={styles.row}>
 
-<DashboardCard
+        <DashboardCard
 
-icon="🚖"
+          icon="🚖"
 
-title="Available"
+          title="Available Taxis"
 
-value={availability.taxis.toString()}
+          value={dashboard.availableTaxis.toString()}
 
-subtitle="Taxis Ready"
+          subtitle="Ready To Load"
 
-/>
+        />
 
-<DashboardCard
+        <DashboardCard
 
-icon="🟢"
+          icon="📍"
 
-title="Queue"
+          title="Live Queue"
 
-value={availability.queue.toString()}
+          value={dashboard.liveQueue.toString()}
 
-subtitle="Loading"
+          subtitle="Currently Waiting"
 
-/>
+        />
 
-</View>
+      </View>
 
-<View style={styles.row}>
+      <View style={styles.row}>
 
-<DashboardCard
+        <DashboardCard
 
-icon="🕘"
+          icon="🕐"
 
-title="Last Taxi"
+          title="Operating Hours"
 
-value={availability.lastTaxi}
+          value={dashboard.operatingHours}
 
-subtitle="Today"
+          subtitle="Today's Schedule"
 
-/>
+        />
 
-<DashboardCard
+        <DashboardCard
 
-icon="🛡️"
+          icon="🕘"
 
-title="Alerts"
+          title="Last Taxi"
 
-value={availability.alerts.toString()}
+          value={dashboard.lastTaxiDeparture}
 
-subtitle="Active"
+          subtitle="Last Recorded Departure"
 
-/>
+        />
 
-</View>
+      </View>
 
-</>
+    </>
 
-);
+  );
 
 }
 
-const styles=StyleSheet.create({
+const styles = StyleSheet.create({
 
-row:{
+  row: {
 
-flexDirection:'row',
+    flexDirection: 'row',
 
-},
+  },
 
 });

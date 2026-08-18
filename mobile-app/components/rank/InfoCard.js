@@ -1,99 +1,89 @@
 import React from 'react';
 
 import {
-
-View,
-
-Text,
-
-StyleSheet,
-
+  View,
+  Text,
+  StyleSheet,
 } from 'react-native';
 
 import colors from '../../theme/colors';
 
 export default function InfoCard({
 
-title,
+  title,
 
-value,
+  value,
 
-icon,
+  icon,
 
-}){
+}) {
 
-return(
+  return (
 
-<View style={styles.card}>
+    <View style={styles.card}>
 
-<Text style={styles.icon}>
+      <Text style={styles.icon}>
+        {icon}
+      </Text>
 
-{icon}
+      <Text style={styles.title}>
+        {title}
+      </Text>
 
-</Text>
+      <Text style={styles.value}>
+        {value}
+      </Text>
 
-<Text style={styles.title}>
+    </View>
 
-{title}
-
-</Text>
-
-<Text style={styles.value}>
-
-{value}
-
-</Text>
-
-</View>
-
-);
+  );
 
 }
 
-const styles=StyleSheet.create({
+const styles = StyleSheet.create({
 
-card:{
+  card: {
 
-backgroundColor:colors.surface,
+    backgroundColor: colors.surface,
 
-borderRadius:18,
+    borderRadius: 18,
 
-padding:18,
+    padding: 18,
 
-marginBottom:16,
+    marginBottom: 16,
 
-borderWidth:1,
+    borderWidth: 1,
 
-borderColor:colors.border,
+    borderColor: colors.border,
 
-},
+  },
 
-icon:{
+  icon: {
 
-fontSize:28,
+    fontSize: 28,
 
-marginBottom:10,
+    marginBottom: 10,
 
-},
+  },
 
-title:{
+  title: {
 
-color:colors.textSecondary,
+    color: colors.textSecondary,
 
-fontSize:13,
+    fontSize: 13,
 
-},
+  },
 
-value:{
+  value: {
 
-marginTop:5,
+    marginTop: 5,
 
-color:colors.white,
+    color: colors.white,
 
-fontWeight:'800',
+    fontWeight: '800',
 
-fontSize:20,
+    fontSize: 20,
 
-},
+  },
 
 });

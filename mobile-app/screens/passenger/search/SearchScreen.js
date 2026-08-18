@@ -41,12 +41,9 @@ export default function SearchScreen({ navigation }) {
 
     }
 
-    navigation.navigate(
-      'TaxiRankDetails',
-      {
-        rankId: destination.id,
-      }
-    );
+    navigation.navigate('TaxiRankDetails', {
+      rankId: destination.id,
+    });
 
   }
 
@@ -85,27 +82,23 @@ export default function SearchScreen({ navigation }) {
 
           loading ?
 
-          (
-
             <ActivityIndicator
               size="large"
               color={colors.primary}
               style={styles.loader}
             />
 
-          )
+            :
 
-          :
+            results.map(item => (
 
-          results.map(item => (
+              <DestinationCard
+                key={item.id}
+                destination={item}
+                onPress={handleDestinationSelect}
+              />
 
-            <DestinationCard
-              key={item.id}
-              destination={item}
-              onPress={handleDestinationSelect}
-            />
-
-          ))
+            ))
 
         }
 
@@ -119,17 +112,17 @@ export default function SearchScreen({ navigation }) {
 
 const styles = StyleSheet.create({
 
-  container:{
+  container: {
 
-    padding:20,
+    padding: 20,
 
-    paddingBottom:40,
+    paddingBottom: 40,
 
   },
 
-  loader:{
+  loader: {
 
-    marginTop:40,
+    marginTop: 40,
 
   },
 
